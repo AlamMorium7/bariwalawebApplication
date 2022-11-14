@@ -15,43 +15,58 @@
             <div class="col-md-4 col-md-offset-4" ></div>
             <h4 style="text-align:center">Registration</h4>
             <form action="{{route("registeruser")}}" method="post">
+                @if(Session::has('success'))
+                <div class="alert-success">{{Session::get('success')}}</div>
+                @endif
+                @if(Session::has('fail'))
+                <div class="alert-danger">{{Session::get('fail')}}</div>
+                @endif
+
                 @csrf
                 <div class="form-group">
                     
                   
         <div class="form-group">
             <label for="name">Name</label><br>
-            <input type="text" name="name" id="name" placeholder="Enter name">
-            
+            <input type="text" name="name" id="name" placeholder="Enter name" value="{{old('name')}}">
+            @error('name')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
                
             
         </div>
         <div class="form-group">
             <label for="email">Email</label><br>
-            <input type="email" name="email" id="email"  placeholder="Enter email">
-           
+            <input type="email" name="email" id="email"  placeholder="Enter email" value="{{old('email')}}">
+            @error('email')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
                
            
         </div>
         <div class="form-group">
             <label for="password">Password</label><br>
-            <input type="password" name="password" id="password"  placeholder="Enter password">
-           
-               
+            <input type="password" name="password" id="password"  placeholder="Enter password" value="{{old('password')}}">
+            @error('password')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
            
         </div>
         <div class="form-group">
             <label for="address">Address</label><br>
-            <input type="text" name="address" id="address"  placeholder="Enter address">
-           
-           
-            
+            <input type="text" name="address" id="address"  placeholder="Enter address" value="{{old('address')}}">
+            @error('address')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+                  
         </div>
+
         <div class="form-group">
             <label for="phone">Contact</label><br>
-            <input type="number" name="phone" id="phone"  placeholder="Enter contact no">
-            
-           
+            <input type="number" name="phone" id="phone"  placeholder="Enter contact number" value="{{old('phone')}}">
+            @error('phone')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
            
         </div>
 
