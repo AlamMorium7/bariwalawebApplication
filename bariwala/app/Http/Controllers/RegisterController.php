@@ -10,6 +10,10 @@ use Session;
 class RegisterController extends Controller
 {
     //
+
+    public function home(){
+        return "h";
+    }
    public function login(){
     return view('login');
    }

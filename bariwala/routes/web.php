@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome'); 
 });
 
+//Route::get('/home',[RegisterController::class,'home']);
 Route::get('/login',[RegisterController::class,'login'])->name('login')->middleware('AlreadyLoggedIn');
 Route::get('/registration',[RegisterController::class,'registration'])->name('registration')->middleware('AlreadyLoggedIn');
 Route::post('/registeruser',[RegisterController::class,'registeruser'])->name('registeruser');
