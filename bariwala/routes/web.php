@@ -18,6 +18,9 @@ Route::get('/', function () {
     return view('welcome'); 
 });
 
-Route::get('/login',[RegisterController::class,'login'])->name('login');
-Route::get('/registration',[RegisterController::class,'registration'])->name('registration');
+Route::get('/login',[RegisterController::class,'login'])->name('login')->middleware('AlreadyLoggedIn');
+Route::get('/registration',[RegisterController::class,'registration'])->name('registration')->middleware('AlreadyLoggedIn');
 Route::post('/registeruser',[RegisterController::class,'registeruser'])->name('registeruser');
+Route::post('/loginuser',[RegisterController::class,'loginUser'])->name('loginuser');
+Route::get('/dashboard',[RegisterController::class,'dashboard'])->middleware('isLoggedIn');
+Route::get('/logout',[RegisterController::class,'logout']);
